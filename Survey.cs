@@ -99,18 +99,20 @@ namespace DataConsole
         static public List<Angle> AngleCorrection(Angle dAngle, List<double> s)
         {
             int n = s.Count();
-            int start = 0;
-            for (int i = 0; i < n; i++)
+            int start = -1;
+            // 检查导线类型(1:闭合 2:附合)
+            if (s.Last() == 0)
             {
-                if (s[i] != 0)
-                {
-                    start = i;
-                    break;
-                }
+                n -= 1;
+                start = 0;
             }
-            Angle dbAngle;
+            else
+            {
+                start = 1;
+            }
+            // 取平分值并赋值
+            Angle dbAngle = dAngle / -(n - start);
             List<Angle> db = new List<Angle>(new Angle[n]);
-            dbAngle = dAngle / -(n - start);
             for (int i = start; i < n; i++)
             {
                 db[i] = dbAngle;
@@ -127,7 +129,7 @@ namespace DataConsole
                     if (index < start) index = n - 1;
                     if (!added.Exists(delegate (int a) { return a == index; }))
                     {
-                        db[index] += new Angle(0, 0, Math.Sign(dbAngle.GetD()));
+                        db[index] += new Angle(0, 0, Math.Sign(-dAngle.GetD()));
                         added.Add(index);
                         break;
                     }
@@ -142,7 +144,6 @@ namespace DataConsole
                     }
                 }
             }
-
             return db;
         }
         /// <summary>

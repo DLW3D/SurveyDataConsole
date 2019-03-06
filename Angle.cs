@@ -155,7 +155,7 @@ namespace DataConsole
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Console.WriteLine(e.StackTrace);
                 throw;
             }
             return angle;
@@ -169,7 +169,7 @@ namespace DataConsole
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Console.WriteLine(e.StackTrace);
                 throw;
             }
             return angle;
@@ -183,7 +183,7 @@ namespace DataConsole
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Console.WriteLine(e.StackTrace);
                 throw;
             }
             return angle;
@@ -200,7 +200,7 @@ namespace DataConsole
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Console.WriteLine(e.StackTrace);
                 throw;
             }
             return angle;
@@ -215,10 +215,15 @@ namespace DataConsole
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Console.WriteLine(e.StackTrace);
                 throw;
             }
             return angle;
+        }
+        
+        override public string ToString()
+        {
+            return degree + "°" + minute + "'" + second + "''";
         }
     }
 }

@@ -89,7 +89,8 @@ namespace DataConsole
             dAngle = tAngle - a[n - 1];
             // 计算改正值dβ
             db = new List<Angle>();
-            db.AddRange(Survey.AngleCorrection(n - 1, dAngle, sign));
+            //db.AddRange(Survey.AngleCorrection(n - 1, dAngle, sign));
+            db.AddRange(Survey.AngleCorrection(dAngle, s));
             db.Add(null);
             // 计算改正后值β'
             for (int i = 0; i < n - 1; i++)
