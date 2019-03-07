@@ -284,7 +284,7 @@ namespace DataConsole
                 string acc = "";
                 if (accuracy != -1)
                 {
-                    acc += ":.";
+                    acc += ":0.";
                     for (int iii = 0; iii < accuracy; iii++)
                     {
                         acc += "0";

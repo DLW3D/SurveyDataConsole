@@ -221,30 +221,30 @@ namespace DataConsole
             List<string> exkeys = new List<string>
             {
                 "观测角之和Eβ",
-                "计算得终点坐标方位角α'",
-                "角度闭合差Δα",
-                "修正后终点坐标方位角α''",
+                "αn-α1",
+                "▲角度闭合差Δα",
+                //"计算得终点坐标方位角α'",
+                //"修正后终点坐标方位角α''",
                 "导线总长Es",
-                "坐标增量和Ex",
-                "坐标增量和Ey",
-                "坐标闭合差fx",
-                "坐标闭合差fy",
+                "Xn-X1,Yn-Y1",
+                "坐标增量和Ex,Ey",
+                "坐标闭合差fx,fy",
                 "全长闭合差fs",
-                "相对闭合差fs/Es",
+                "▲相对闭合差K=fs/Es",
             };
             List<Object> exvalues = new List<object>
             {
                 eb.GetDMS(),
-                tAngle.GetDMS(),
+                (a.Last() - a.First()).GetDMS(),
                 dAngle.GetDMS(),
-                ttAngle.GetDMS(),
+                //tAngle.GetDMS(),
+                //ttAngle.GetDMS(),
                 es,
-                edeltaVector.x,
-                edeltaVector.y,
-                dVector.x,
-                dVector.y,
-                Math.Sqrt(Math.Pow(dVector.x,2)+Math.Pow(dVector.y,2)),
-                Math.Sqrt(Math.Pow(dVector.x,2)+Math.Pow(dVector.y,2))/es,
+                vector[n - 2] - vector.First(),
+                edeltaVector,
+                dVector,
+                Math.Round(Math.Sqrt(Math.Pow(dVector.x,2)+Math.Pow(dVector.y,2)),accuracy),
+                "1/" + es/Math.Round(Math.Sqrt(Math.Pow(dVector.x,2)+Math.Pow(dVector.y,2)),accuracy),
             };
             Survey.Prints(n, keys, values, exkeys, exvalues, accuracy);
         }

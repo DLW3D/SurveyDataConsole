@@ -68,7 +68,7 @@ namespace DataConsole
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Console.WriteLine(e.StackTrace);
                 throw;
             }
         }
@@ -80,7 +80,7 @@ namespace DataConsole
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Console.WriteLine(e.StackTrace);
                 throw;
             }
         }
@@ -92,7 +92,7 @@ namespace DataConsole
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Console.WriteLine(e.StackTrace);
                 throw;
             }
         }
@@ -104,9 +104,14 @@ namespace DataConsole
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Console.WriteLine(e.StackTrace);
                 throw;
             }
+        }
+
+        override public string ToString()
+        {
+            return String.Format("({0},{1})", Math.Round(x, 3), Math.Round(y, 3));
         }
     }
 }
