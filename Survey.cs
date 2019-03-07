@@ -138,7 +138,7 @@ namespace DataConsole
                     if (index >= n) index = start;
                     if (!added.Exists(delegate (int a) { return a == index; }))
                     {
-                        db[index] += new Angle(0, 0, Math.Sign(dbAngle.GetD()));
+                        db[index] += new Angle(0, 0, Math.Sign(-dAngle.GetD()));
                         added.Add(index);
                         break;
                     }
